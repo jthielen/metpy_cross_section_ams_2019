@@ -1,0 +1,15 @@
+downloads/
+citations/
+*_old/
+*.aux
+*.log
+*.fff
+*.lof
+*.ttt
+*.lot
+*.bbl
+*.blg
+*.out
+*.toc
+*.snm
+*.nav

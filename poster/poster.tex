@@ -16,6 +16,10 @@
 \usepackage{booktabs}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{minted}
+
+\usemintedstyle{lovelace}
+\setminted{autogobble=true}
 
 % ====================
 % Lengths
@@ -46,31 +50,23 @@
 
 \begin{document}
 
-\begin{frame}[t]
+\begin{frame}[t, fragile]
 \begin{columns}[t]
 \separatorcolumn
 
 \begin{column}{\colwidth}
 
-  \begin{block}{A block title}
+  \begin{block}{Background}
 
-    Some block contents, followed by a diagram, followed by a dummy paragraph.
-
-    \begin{figure}
-      \centering
-      \begin{tikzpicture}[scale=6]
-        \draw[step=0.25cm,color=gray] (-1,-1) grid (1,1);
-        \draw (1,0) -- (0.2,0.2) -- (0,1) -- (-0.2,0.2) -- (-1,0)
-          -- (-0.2,-0.2) -- (0,-1) -- (0.2,-0.2) -- cycle;
-      \end{tikzpicture}
-      \caption{A figure caption.}
-    \end{figure}
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultricies
-    eget libero ac ullamcorper. Integer et euismod ante. Aenean vestibulum
-    lobortis augue, ut lobortis turpis rhoncus sed. Proin feugiat nibh a
-    lacinia dignissim. Proin scelerisque, risus eget tempor fermentum, ex
-    turpis condimentum urna, quis malesuada sapien arcu eu purus.
+    \begin{itemize}
+      \item Fusce dapibus tellus vel tellus semper finibus. In
+        consequat, nibh sed mattis luctus, augue diam fermentum lectus.
+      \item In euismod erat metus non ex. Vestibulum luctus augue in
+        mi condimentum, at sollicitudin lorem viverra.
+      \item Suspendisse vulputate mauris vel placerat consectetur.
+        Mauris semper, purus ac hendrerit molestie, elit mi dignissim odio, in
+        suscipit felis sapien vel ex.
+    \end{itemize}
 
   \end{block}
 

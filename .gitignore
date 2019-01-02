@@ -13,3 +13,5 @@ citations/
 *.toc
 *.snm
 *.nav
+*.vrb
+*.pygtex

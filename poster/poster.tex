@@ -43,7 +43,7 @@
 
 \author{Jonathan E. Thielen \inst{1} \and Ryan M. May \inst{2} \and John R. Leeman \inst{2}}
 
-\institute[shortinst]{\inst{1} Dept. of Geological and Atmsopheric Sciences, Iowa State University \samelineand \inst{2} Unidata/UCAR}
+\institute[shortinst]{\inst{1} Department of Geological and Atmospheric Sciences, Iowa State University, Ames, IA \samelineand \inst{2} Unidata/UCAR, Boulder, CO}
 
 % ====================
 % Body
@@ -65,7 +65,7 @@
           \item Convective systems
           \item Isentropic ascent
           \item Tropopause folds
-          \item Conditional Symmetrix Instability (CSI)
+          \item Conditional Symmetric Instability (CSI)
         \end{itemize}
       \item The General Meteorology Package (GEMPAK) has the ability to obtain and plot such vertical cross sections through three-dimensional data, however, this functionality has been lacking until recently in MetPy. 
         \begin{figure}
@@ -79,7 +79,7 @@
 
   \begin{alertblock}{xarray and MetPy}
 
-    xarray is a powerful Python package that provides N-dimensional labeled arrays and datasets following the Common Data Model with many useful utility methods for indexing, interpolating, and reducing data. MetPy is transitioning to using xarray as its primary data model and includes of number of helper methods via an accessor interface, such a those below:
+    xarray is a powerful Python package that provides N-dimensional labeled arrays and datasets following the Common Data Model with many useful utility methods for indexing, interpolating, and reducing data. MetPy is transitioning to using xarray as its primary data model and includes of number of helper methods via an accessor interface, such as those below:
 
     \begin{minted}{python}
       import xarray as xr
@@ -107,7 +107,7 @@
 
   \begin{exampleblock}
 
-    \vspace{-2em}
+    \vspace{-1.5em}
 
     \begin{figure}
       \centering
@@ -135,17 +135,35 @@
 
   \begin{block}{Implementation}
 
-    Details about implementation. Et cetera,  ad litora torquent per conubia nostra, per
-    inceptos himenaeos. Phasellus libero enim, gravida sed erat sit amet,
-    scelerisque congue diam. Fusce dapibus dui ut augue pulvinar iaculis.
+    \begin{itemize}
+      \item Preliminaries with xarray integration
+        \begin{itemize}
+          \item Construction of Cartopy CRS from CF metadata and basic unit helpers (already implemented in v0.8)
+          \item Systematic identification of coordinate types (from CF metadata, or regular expression parsing as a fallback) to automatically recognize which coordinate corresponds to the x, y, and vertical directions
+          \item Derivative calculations updated to accept and return xarray DataArrays (while being coordinate-aware)
+        \end{itemize}
+      \item MetPy's \mintinline{python}{cross_section()} is currently a coordinate-type- and projection-aware wrapper for xarray interpolation
+        \begin{itemize}
+          \item Takes a number of steps and a start and end point as arguments, and constructs a geodesic path along which to interpolate the input gridded data
+          \item Linear and nearest neighbor interpolation methods available
+          \item Input gridded data must be at least three-dimensional (x, y, and vertical), and any extra dimensions (such as time or ensemble member) are preserved
+          \item \mintinline{python}{interpolate_to_slice()} available for cross sections on arbitrary paths
+        \end{itemize}
+      \item Cross section calculations (such as projected wind components and cross-sectional absolute (or ``pseudoangular'') momentum) are also available
+    \end{itemize}
 
   \end{block}
 
   \begin{block}{Future Work}
 
-    Details about future work. Et cetera,  ad litora torquent per conubia nostra, per
-    inceptos himenaeos. Phasellus libero enim, gravida sed erat sit amet,
-    scelerisque congue diam. Fusce dapibus dui ut augue pulvinar iaculis.
+    \begin{itemize}
+      \item Extending cross section interpolation to unstructured data, such as observed soundings
+        \begin{itemize}
+          \item Use MetPy's interpolation methods like Cressman, Natural Neighbor, and Radial Basis Function
+          \item Needs easy way to access surface and upper-air observations and a reliable format to store metadata-rich unstructured data in xarray
+        \end{itemize}
+      \item Making these cross section plots easier using a declarative interface (see Talk 4.1 by Ryan May, ``Bringing GEMPAK-like Syntax to Python with MetPy's Declarative Plotting Interface'')
+    \end{itemize}
 
   \end{block}
 
@@ -154,8 +172,6 @@
     Interested in finding out more or exploring some demo notebooks? Check out
 
     \vspace{1em} 
-
-
 
     \begin{figure}
       \centering

@@ -1,6 +1,8 @@
 downloads/
 citations/
+.ipynb_checkpoints/
 *_old/
+_*/
 *.aux
 *.log
 *.fff

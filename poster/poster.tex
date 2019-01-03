@@ -79,7 +79,7 @@
 
   \begin{alertblock}{xarray and MetPy}
 
-    xarray is a powerful Python package that provides N-dimensional labeled arrays and datasets following the Common Data Model with many useful utility methods for indexing, interpolating, and reducing data. MetPy is transitioning to using xarray as its primary data model and includes of number of helper methods via an accessor interface, such as those below:
+    xarray is a powerful Python package that provides N-dimensional labeled arrays and datasets following the Common Data Model with many useful utility methods for indexing, interpolating, and reducing data. MetPy is transitioning to using xarray as its primary data model and includes several helper methods via an accessor interface, such as these below:
 
     \begin{minted}{python}
       import xarray as xr
@@ -112,17 +112,17 @@
     \begin{figure}
       \centering
       \includegraphics[width=\colwidth]{figures/basic_example_narr.pdf}
-      \caption{Basic cross section example using NARR data, with demonstration of wind components (included in MetPy documentation).}
+      \caption{Cross section example using NARR data, with demonstration of wind components (included in MetPy documentation).}
     \end{figure}
     \begin{figure}
       \centering
       \includegraphics[width=\colwidth]{figures/wrf_refl.pdf}
-      \caption{Cross section of simulated reflectivity through a bow echo as simulated in a 1-km WRF-ARW run.}
+      \caption{Cross section of simulated reflectivity through a bow echo as depicted in a 1-km WRF-ARW run.}
     \end{figure}
     \begin{figure}
       \centering
       \includegraphics[width=\colwidth]{figures/csi_example_narr.pdf}
-      \caption{Cross section of Moist Potential Vorticity (MPV) and Absolute Momentum for assessing CSI.}
+      \caption{Cross section of Moist Geostrophic Potential Vorticity (MPV\textsubscript{g}) and Absolute Momentum for assessing CSI.}
     \end{figure}
 
   \end{exampleblock}
@@ -139,7 +139,7 @@
       \item Preliminaries with xarray integration
         \begin{itemize}
           \item Construction of Cartopy CRS from CF metadata and basic unit helpers (already implemented in v0.8)
-          \item Systematic identification of coordinate types (from CF metadata, or regular expression parsing as a fallback) to automatically recognize which coordinate corresponds to the x, y, and vertical directions
+          \item Systematic identification of coordinate types (from CF metadata, or regular expression parsing as a fallback) to automatically recognize which coordinates correspond to the x, y, and vertical directions
           \item Derivative calculations updated to accept and return xarray DataArrays (while being coordinate-aware)
         \end{itemize}
       \item MetPy's \mintinline{python}{cross_section()} is currently a coordinate-type- and projection-aware wrapper for xarray interpolation
@@ -157,32 +157,30 @@
   \begin{block}{Future Work}
 
     \begin{itemize}
-      \item Extending cross section interpolation to unstructured data, such as observed soundings
+      \item Extending cross section interpolation to unstructured point data, such as observed soundings
         \begin{itemize}
           \item Use MetPy's interpolation methods like Cressman, Natural Neighbor, and Radial Basis Function
-          \item Needs easy way to access surface and upper-air observations and a reliable format to store metadata-rich unstructured data in xarray
+          \item Needs easy way to access surface and upper-air observations and a reliable format for storing metadata-rich unstructured data in xarray
         \end{itemize}
-      \item Making these cross section plots easier using a declarative interface (see Talk 4.1 by Ryan May, ``Bringing GEMPAK-like Syntax to Python with MetPy's Declarative Plotting Interface'')
+      \item Improving ease-of-use by implementing a declarative interface for cross section plots (see Talk 4.1 by Ryan May, ``Bringing GEMPAK-like Syntax to Python with MetPy's Declarative Plotting Interface'')
     \end{itemize}
 
-  \end{block}
-
-  \begin{exampleblock}
+    \vspace{0.5em} 
 
     Interested in finding out more or exploring some demo notebooks? Check out
 
-    \vspace{1em} 
+    \vspace{0.25em} 
 
     \begin{figure}
       \centering
       \large{\url{https://github.com/jthielen/}\\ \url{metpy_cross_section_ams_2019}}
 
-      \vspace{1em}
+      \vspace{0.5em}
 
       \qrcode[height=3in]{https://github.com/jthielen/metpy_cross_section_ams_2019}
     \end{figure}
 
-  \end{exampleblock}
+  \end{block}
 
 \end{column}
 
